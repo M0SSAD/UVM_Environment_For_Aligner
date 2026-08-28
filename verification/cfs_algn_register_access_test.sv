@@ -9,16 +9,16 @@
 
         // run phase task
         virtual task run_phase(uvm_phase phase);
-            phase.raise_objection(this); // I am doing smth, don't end the run_phase
+            phase.raise_objection(this, "TEST_DONE"); // I am doing smth, don't end the run_phase
 
             // test body
+
+            `uvm_info("REG_ACCESS_TEST", "DEBUG: TEST STARTED.", UVM_LOW)
             // TODO
             #100;
-            
-
             `uvm_info("REG_ACCESS_TEST", "DEBUG: TEST FINISHED.", UVM_LOW)
 
-            phase.drop_objection(this); // you may end the run phase
+            phase.drop_objection(this, "TEST_DONE"); // you may end the run phase
         endtask
 
     endclass
